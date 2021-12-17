@@ -10,7 +10,7 @@ class RegistrationController {
     let registrations = await this._registrationService.getAll();
     registrations = registrations.map(registration => mapper(RegistrationDto, registration));
     return res.send({
-      payload: registrations
+      data: registrations
     });
   }
 
@@ -22,7 +22,7 @@ class RegistrationController {
     }
     registration = mapper(RegistrationDto, registration);
     return res.send({
-      payload: registration
+      data: registration
     });
   }
 
@@ -31,7 +31,7 @@ class RegistrationController {
     const createdRegistration = await this._registrationService.create(body);
     const registration = mapper(RegistrationDto, createdRegistration);
     return res.status(201).send({
-      payload: registration
+      data: registration
     });
   }
 

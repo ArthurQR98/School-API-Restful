@@ -10,7 +10,7 @@ class SubjectController {
         let subjects = await this._subjectService.getAll();
         subjects = subjects.map(subject => mapper(SubjectDto, subject));
         return res.send({
-            payload: subjects
+            data: subjects
         });
     }
 
@@ -22,7 +22,7 @@ class SubjectController {
         }
         subject = mapper(SubjectDto, subject);
         return res.send({
-            payload: subject
+            data: subject
         });
     }
 
@@ -31,7 +31,7 @@ class SubjectController {
         const createdSubject = await this._subjectService.create(body);
         const subject = mapper(SubjectDto, createdSubject);
         return res.status(201).send({
-            payload: subject
+            data: subject
         });
     }
 

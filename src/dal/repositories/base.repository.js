@@ -12,6 +12,11 @@ class BaseRepository {
     return this._db[this.entity].findOne({ where: { id } });
   }
 
+  findByEmail(data) {
+    const { email } = data;
+    return this._db[this.entity].findOne({ where: { email } });
+  }
+
   create(entity) {
     return this._db[this.entity].create(entity);
   }

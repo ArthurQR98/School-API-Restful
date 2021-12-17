@@ -10,7 +10,7 @@ class SectionController {
         let sections = await this._sectionService.getAll();
         sections = sections.map(section => mapper(SectionDto, section));
         return res.send({
-            payload: sections
+            data: sections
         });
     }
 
@@ -22,7 +22,7 @@ class SectionController {
         }
         section = mapper(SectionDto, section);
         return res.send({
-            payload: section
+            data: section
         });
     }
 
@@ -31,7 +31,7 @@ class SectionController {
         const createdSection = await this._sectionService.create(body);
         const section = mapper(SectionDto, createdSection);
         return res.status(201).send({
-            payload: section
+            data: section
         });
     }
 

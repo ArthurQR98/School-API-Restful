@@ -19,6 +19,10 @@ class BaseBusiness {
 
   async create(entity) {
     entity = mapper(this.entityToMap, entity);
+    const isExist = await this._entityRepository.findByEmail(entity);
+    if (isExist) {
+      return true;
+    }
     const createdEntity = await this._entityRepository.create(entity);
     return mapper(this.entityToMap, createdEntity.toJSON());
   }

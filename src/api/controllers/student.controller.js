@@ -9,7 +9,7 @@ class StudentController {
     let students = await this._studentService.getAll();
     students = students.map(student => mapper(StudentDto, student));
     return res.send({
-      payload: students
+      data: students
     });
   }
 
@@ -21,16 +21,19 @@ class StudentController {
     }
     student = mapper(StudentDto, student);
     return res.send({
-      payload: student
+      data: student
     });
   }
 
   async createStudent(req, res) {
     const { body } = req;
     const createdStudent = await this._studentService.create(body);
+    if (createdStudent === true) {
+      return res.status(400).send({ message: "User with that email already exist" })
+    }
     const student = mapper(StudentDto, createdStudent);
     return res.status(201).send({
-      payload: student
+      data: student
     });
   }
 

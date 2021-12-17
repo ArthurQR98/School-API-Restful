@@ -10,7 +10,7 @@ class CourseController {
     let courses = await this._courseService.getAll();
     courses = courses.map(course => mapper(CourseDto, course));
     return res.send({
-      payload: courses
+      data: courses
     });
   }
 
@@ -22,7 +22,7 @@ class CourseController {
     }
     course = mapper(CourseDto, course);
     return res.send({
-      payload: course
+      data: course
     });
   }
 
@@ -31,7 +31,7 @@ class CourseController {
     const createdCourse = await this._courseService.create(body);
     const course = mapper(CourseDto, createdCourse);
     return res.status(201).send({
-      payload: course
+      data: course
     });
   }
 
